@@ -164,3 +164,47 @@ var generateMatrix = function(n) {
         return matrix;
 }
 ```
+
+## 随想录代码
+
+```JavaScript
+/**
+ * @param {number} n
+ * @return {number[][]}
+ * 模拟
+ * 时间复杂度 O(n^2)
+ * 空间复杂度 O(n^2)
+ * 1. 定义一个二维数组，用于存放螺旋矩阵
+ * 2. 定义四个变量，分别表示螺旋矩阵的上下左右边界，定义一个变量，用于存放螺旋矩阵的元素
+ * 3. 遍历螺旋矩阵的每一层，从左到右，从上到下，从右到左，从下到上
+ * 4. 返回螺旋矩阵
+ */
+var generateMatrix2 = function(n) {
+    let res = new Array(n).fill(0).map(() => new Array(n).fill(0));//创建一个n*n的二维数组
+    let startX = 0, startY = 0;//定义每循环一个圈的起始位置(x,y)坐标
+    let loop = Math.floor(n / 2);//定义循环的圈数
+    let mid = Math.floor(n / 2);//定义中间位置的坐标
+    let count = 1;//定义填充数字增量
+    let offset = 1;//定义每一圈循环，每条边遍历的长度
+    while(loop--) {
+        let row = startX, col = startY;
+        for(; col <  n - offset; col++) {//从左到右，填充上边界
+            res[row][col] = count++;
+        }
+        for(; row <  n - offset; row++) {//从上到下，填充右边界
+            res[row][col] = count++;
+        }
+        for(; col > startY; col--) {//从右到左，填充下边界
+            res[row][col] = count++;
+        }
+        for(; row > startX; row--) {//从下到上，填充左边界
+            res[row][col] = count++;
+        }
+        startX++;
+        startY++;
+        offset++;
+    }
+    if(n % 2==1) res[mid][mid] = count;
+    return res;
+}
+```
