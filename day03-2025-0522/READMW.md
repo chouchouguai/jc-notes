@@ -149,15 +149,10 @@ var landFunc = function () {
 ```
 # 203 移除链表元素
 [题目链接](https://leetcode.cn/problems/remove-linked-list-elements/description/)
+输入：head = [1,2,6,3,4,5,6], val = 6
+输出：[1,2,3,4,5]
 # 代码
 ```javaScript
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
 /**
  * @param {ListNode} head
  * @param {number} val
